@@ -2,13 +2,14 @@
   "name": "kids-professional-platform-final",
   "version": "1.0.0",
   "description": "「子どものプロが、自分のポートフォリオを無料で公開できる場所」として最小限の機能を実装。",
-  "main": "server.js",
+  "main": "index.html",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "echo \"Development server not needed for static site\"",
+    "build": "echo \"No build step required for static site\"",
+    "start": "echo \"Static site served directly by Vercel\""
   },
   "keywords": [],
   "author": "",

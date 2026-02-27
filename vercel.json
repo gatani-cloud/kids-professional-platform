@@ -1,1 +1,16 @@
-{}
+{
+  "functions": {
+    "api/admin-login.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/admin-applications.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/professionals.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/test.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
