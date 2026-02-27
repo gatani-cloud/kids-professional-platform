@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理ダッシュボード - Kids Professional Platform</title>
+    <link rel="stylesheet" href="../../website/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .admin-container {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: grid;
+            grid-template-columns: 250px 1fr;
+        }
+        
+        .admin-sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .admin-logo {
+            text-align: center;
+            padding: 0 1rem 2rem;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-logo h3 {
+            color: #4CAF50;
+            font-size: 1.1rem;
+        }
+        
+        .admin-nav {
+            list-style: none;
+        }
+        
+        .admin-nav li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-nav a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            background: #34495e;
+            color: #4CAF50;
+        }
+        
+        .admin-nav i {
+            margin-right: 0.8rem;
+            width: 16px;
+        }
+        
+        .admin-main {
+            background: #f8f9fa;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .admin-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .admin-user {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+        
+        .admin-user i {
+            margin-right: 0.5rem;
+            color: #4CAF50;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4CAF50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .pending-applications {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .table-header i {
+            margin-right: 0.5rem;
+        }
+        
+        .applications-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .applications-table th,
+        .applications-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .applications-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .applications-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            display: inline-block;
+            min-width: 70px;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-small {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-approve {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-approve:hover {
+            background: #218838;
+        }
+        
+        .btn-reject {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-reject:hover {
+            background: #c82333;
+        }
+        
+        .btn-view {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-view:hover {
+            background: #545b62;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .application-details {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .detail-group {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .detail-value {
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-sidebar {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .applications-table {
+                font-size: 0.8rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <h3><i class="fas fa-cogs"></i> 管理者専用</h3>
+                <p style="font-size: 0.8rem; color: #bdc3c7; margin-top: 0.5rem;">Kids Professional Platform</p>
+            </div>
+            
+            <ul class="admin-nav">
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> ダッシュボード</a></li>
+                <li><a href="#applications"><i class="fas fa-user-plus"></i> 登録申請</a></li>
+                <li><a href="#professionals"><i class="fas fa-users"></i> プロフェッショナル管理</a></li>
+                <li><a href="#statistics"><i class="fas fa-chart-bar"></i> 統計・分析</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> システム設定</a></li>
+                <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> ログアウト</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1 class="admin-title">管理ダッシュボード</h1>
+                <div class="admin-user">
+                    <i class="fas fa-user-shield"></i>
+                    <span>システム管理者</span>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">承認待ち申請</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">42</span>
+                    <span class="stat-label">承認済みプロ</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">38</span>
+                    <span class="stat-label">公開中プロフィール</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1,247</span>
+                    <span class="stat-label">月間閲覧数</span>
+                </div>
+            </div>
+
+            <!-- Pending Applications -->
+            <div class="pending-applications">
+                <div class="table-header">
+                    <i class="fas fa-clock"></i>
+                    承認待ちの登録申請（8件）
+                </div>
+                
+                <table class="applications-table">
+                    <thead>
+                        <tr>
+                            <th>申請日</th>
+                            <th>プロ名</th>
+                            <th>カテゴリ</th>
+                            <th>活動エリア</th>
+                            <th>ステータス</th>
+                            <th>アクション</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2026/02/21</td>
+                            <td>高橋みゆき</td>
+                            <td>音楽・芸術</td>
+                            <td>東京都</td>
+                            <td><span class="status-badge status-pending">審査中</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-small btn-view" onclick="viewApplication(1)">
+                                        <i class="fas fa-eye"></i> 詳細
+                                    </button>
+                                    <button class="btn-small btn-approve" onclick="approveApplication(1)">
+                                        <i class="fas fa-check"></i> 承認
+                                    </button>
+                                    <button class="btn-small btn-reject" onclick="rejectApplication(1)">
+                                        <i class="fas fa-times"></i> 却下
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2026/02/20</td>
+                            <td>伊藤大輔</td>
+                            <td>スポーツ</td>
+                            <td>神奈川県</td>
+                            <td><span class="status-badge status-pending">審査中</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-small btn-view" onclick="viewApplication(2)">
+                                        <i class="fas fa-eye"></i> 詳細
+                                    </button>
+                                    <button class="btn-small btn-approve" onclick="approveApplication(2)">
+                                        <i class="fas fa-check"></i> 承認
+                                    </button>
+                                    <button class="btn-small btn-reject" onclick="rejectApplication(2)">
+                                        <i class="fas fa-times"></i> 却下
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2026/02/19</td>
+                            <td>中村れい</td>
+                            <td>企業支援</td>
+                            <td>全国（リモート）</td>
+                            <td><span class="status-badge status-pending">審査中</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-small btn-view" onclick="viewApplication(3)">
+                                        <i class="fas fa-eye"></i> 詳細
+                                    </button>
+                                    <button class="btn-small btn-approve" onclick="approveApplication(3)">
+                                        <i class="fas fa-check"></i> 承認
+                                    </button>
+                                    <button class="btn-small btn-reject" onclick="rejectApplication(3)">
+                                        <i class="fas fa-times"></i> 却下
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2026/02/18</td>
+                            <td>田村さくら</td>
+                            <td>保育・託児</td>
+                            <td>大阪府</td>
+                            <td><span class="status-badge status-approved">承認済み</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-small btn-view" onclick="viewApplication(4)">
+                                        <i class="fas fa-eye"></i> 詳細
+                                    </button>
+                                    <a href="../pro/sample.html" class="btn-small btn-view">
+                                        <i class="fas fa-external-link-alt"></i> 公開ページ
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2026/02/17</td>
+                            <td>渡辺ひろし</td>
+                            <td>STEAM教育</td>
+                            <td>オンラインのみ</td>
+                            <td><span class="status-badge status-rejected">却下</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-small btn-view" onclick="viewApplication(5)">
+                                        <i class="fas fa-eye"></i> 詳細
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Quick Actions -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h3 style="color: #333; margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-bell" style="color: #4CAF50; margin-right: 0.5rem;"></i>
+                        最新の活動
+                    </h3>
+                    <ul style="list-style: none; color: #666; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                            <i class="fas fa-circle" style="color: #4CAF50; margin-right: 0.5rem; font-size: 0.5rem;"></i>
+                            田中美咲先生のプロフィールが50回閲覧されました
+                        </li>
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                            <i class="fas fa-circle" style="color: #4CAF50; margin-right: 0.5rem; font-size: 0.5rem;"></i>
+                            新規登録申請3件を受理しました
+                        </li>
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                            <i class="fas fa-circle" style="color: #4CAF50; margin-right: 0.5rem; font-size: 0.5rem;"></i>
+                            システムバックアップが完了しました
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h3 style="color: #333; margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-chart-line" style="color: #4CAF50; margin-right: 0.5rem;"></i>
+                        今週の概況
+                    </h3>
+                    <div style="display: grid; gap: 0.8rem; font-size: 0.9rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666;">新規申請</span>
+                            <span style="font-weight: 600; color: #28a745;">+5件</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666;">承認完了</span>
+                            <span style="font-weight: 600; color: #4CAF50;">3件</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666;">プロフィール閲覧</span>
+                            <span style="font-weight: 600; color: #17a2b8;">+234回</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666;">検索回数</span>
+                            <span style="font-weight: 600; color: #6f42c1;">78回</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Application Detail Modal -->
+    <div id="application-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>登録申請詳細</h3>
+                <button class="modal-close" onclick="closeApplicationModal()">&times;</button>
+            </div>
+            <div id="application-details" class="application-details">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="approveCurrentApplication()" style="margin-right: 1rem;">
+                    <i class="fas fa-check"></i> 承認
+                </button>
+                <button class="btn" style="background: #dc3545; color: white;" onclick="rejectCurrentApplication()">
+                    <i class="fas fa-times"></i> 却下
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 id="confirm-title">確認</h3>
+                <button class="modal-close" onclick="closeConfirmModal()">&times;</button>
+            </div>
+            <p id="confirm-message">この操作を実行してもよろしいですか？</p>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button id="confirm-yes" class="btn btn-primary" style="margin-right: 1rem;">はい</button>
+                <button class="btn" style="background: #6c757d; color: white;" onclick="closeConfirmModal()">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentApplicationId = null;
+        
+        // Applications data (loaded from API)
+        let applications = {};
+        
+        // Load applications from API
+        async function loadApplications() {
+            try {
+                const response = await fetch('/api/admin-applications');
+                const data = await response.json();
+                
+                // Convert array to object for easier access
+                applications = {};
+                data.forEach(app => {
+                    applications[app.id] = {
+                        name: app.display_name,
+                        email: app.email,
+                        phone: app.phone || 'N/A',
+                        category: app.categories || 'カテゴリ不明',
+                        area: app.activity_area,
+                        ageRange: `${app.target_age_min || 0}歳〜${app.target_age_max || 18}歳`,
+                        bio: app.bio,
+                        skills: app.skills || 'スキル情報なし',
+                        hourlyRate: app.hourly_rate_min && app.hourly_rate_max 
+                            ? `${app.hourly_rate_min.toLocaleString()}円〜${app.hourly_rate_max.toLocaleString()}円/時間`
+                            : '料金情報なし',
+                        appliedAt: new Date(app.created_at).toLocaleDateString('ja-JP'),
+                        status: app.status
+                    };
+                });
+                
+                updateApplicationsList();
+                updateStats();
+            } catch (error) {
+                console.error('Failed to load applications:', error);
+                showNotification('アプリケーションの読み込みに失敗しました', 'error');
+            }
+        }
+        
+        // Sample application data (fallback/demo)
+        const mockApplications = {
+            1: {
+                name: '高橋みゆき',
+                email: 'takahashi@example.com',
+                phone: '090-1234-5678',
+                category: '音楽・芸術',
+                area: '東京都',
+                ageRange: '3歳〜高校生',
+                bio: '音楽大学でヴァイオリンを専攻し、卒業後12年間指導に携わっています。個々の生徒さんの個性を大切にし、音楽の楽しさを伝えることを心がけています。',
+                skills: 'ヴァイオリン演奏・指導、音楽理論、室内楽、ソルフェージュ',
+                hourlyRate: '4,000〜6,000円',
+                appliedAt: '2026年2月21日'
+            },
+            2: {
+                name: '伊藤大輔',
+                email: 'ito@example.com',
+                phone: '080-5678-9012',
+                category: 'スポーツ',
+                area: '神奈川県',
+                ageRange: '6歳〜中学生',
+                bio: '元Jリーガー。現役引退後、子どもたちにサッカーの楽しさと技術を教えています。基礎技術の向上と共に、チームワークの大切さも伝えています。',
+                skills: 'サッカー指導、フィジカルトレーニング、メンタルコーチング',
+                hourlyRate: '3,500〜5,000円',
+                appliedAt: '2026年2月20日'
+            },
+            3: {
+                name: '中村れい',
+                email: 'nakamura@example.com',
+                phone: '070-9876-5432',
+                category: '企業支援',
+                area: '全国（リモート）',
+                ageRange: '企業向け',
+                bio: 'Web制作会社での8年間の経験を活かし、子ども向けサービス企業のWebサイト制作を専門としています。安全で使いやすいUIUXデザインが得意です。',
+                skills: 'UI/UXデザイン、フロントエンド開発、WordPress、Figma、子ども向けデザイン',
+                hourlyRate: '80,000円〜/プロジェクト',
+                appliedAt: '2026年2月19日'
+            }
+        };
+
+        function viewApplication(id) {
+            currentApplicationId = id;
+            const app = applications[id];
+            
+            if (!app) return;
+            
+            const detailsHtml = `
+                <div class="detail-group">
+                    <div class="detail-label">申請日</div>
+                    <div class="detail-value">${app.appliedAt}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">プロ名</div>
+                    <div class="detail-value">${app.name}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">メール</div>
+                    <div class="detail-value">${app.email}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">電話番号</div>
+                    <div class="detail-value">${app.phone}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">カテゴリ</div>
+                    <div class="detail-value">${app.category}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">活動エリア</div>
+                    <div class="detail-value">${app.area}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">対象年齢</div>
+                    <div class="detail-value">${app.ageRange}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">自己紹介</div>
+                    <div class="detail-value">${app.bio}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">スキル・資格</div>
+                    <div class="detail-value">${app.skills}</div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">料金目安</div>
+                    <div class="detail-value">${app.hourlyRate}</div>
+                </div>
+            `;
+            
+            document.getElementById('application-details').innerHTML = detailsHtml;
+            document.getElementById('application-modal').style.display = 'flex';
+        }
+
+        function closeApplicationModal() {
+            document.getElementById('application-modal').style.display = 'none';
+            currentApplicationId = null;
+        }
+
+        function approveApplication(id) {
+            showConfirmDialog(
+                '申請承認',
+                'この申請を承認してもよろしいですか？承認後、プロフィールが公開されます。',
+                () => {
+                    // Call approve API
+                    fetch(`/api/admin/${id}/approve`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            updateApplicationStatus(id, 'approved');
+                            showNotification('申請が承認されました', 'success');
+                            loadApplications(); // Reload data
+                        } else {
+                            showNotification(data.error || '承認に失敗しました', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Approve error:', error);
+                        showNotification('承認処理中にエラーが発生しました', 'error');
+                    });
+                    
+                    closeConfirmModal();
+                    if (currentApplicationId === id) {
+                        closeApplicationModal();
+                    }
+                }
+            );
+        }
+
+        function rejectApplication(id) {
+            showConfirmDialog(
+                '申請却下',
+                'この申請を却下してもよろしいですか？却下理由をメールで送信されます。',
+                () => {
+                    // Call reject API
+                    fetch(`/api/admin/${id}/reject`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            updateApplicationStatus(id, 'rejected');
+                            showNotification('申請が却下されました', 'success');
+                            loadApplications(); // Reload data
+                        } else {
+                            showNotification(data.error || '却下に失敗しました', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Reject error:', error);
+                        showNotification('却下処理中にエラーが発生しました', 'error');
+                    });
+                    
+                    closeConfirmModal();
+                    if (currentApplicationId === id) {
+                        closeApplicationModal();
+                    }
+                }
+            );
+        }
+
+        function updateApplicationStatus(id, status) {
+            // Find the table row and update the status
+            const rows = document.querySelectorAll('.applications-table tbody tr');
+            rows.forEach(row => {
+                const buttons = row.querySelector('.action-buttons');
+                if (buttons && buttons.querySelector('[onclick*="' + id + '"]')) {
+                    const statusBadge = row.querySelector('.status-badge');
+                    if (status === 'approved') {
+                        statusBadge.className = 'status-badge status-approved';
+                        statusBadge.textContent = '承認済み';
+                        
+                        // Update action buttons
+                        const approveBtn = buttons.querySelector('.btn-approve');
+                        const rejectBtn = buttons.querySelector('.btn-reject');
+                        if (approveBtn) approveBtn.style.display = 'none';
+                        if (rejectBtn) rejectBtn.style.display = 'none';
+                        
+                        // Add public page link
+                        buttons.innerHTML += `
+                            <a href="../pro/sample.html" class="btn-small btn-view">
+                                <i class="fas fa-external-link-alt"></i> 公開ページ
+                            </a>
+                        `;
+                    } else if (status === 'rejected') {
+                        statusBadge.className = 'status-badge status-rejected';
+                        statusBadge.textContent = '却下';
+                        
+                        // Hide approve/reject buttons
+                        const approveBtn = buttons.querySelector('.btn-approve');
+                        const rejectBtn = buttons.querySelector('.btn-reject');
+                        if (approveBtn) approveBtn.style.display = 'none';
+                        if (rejectBtn) rejectBtn.style.display = 'none';
+                    }
+                }
+            });
+
+            // Update pending count
+            const pendingCount = document.querySelectorAll('.status-pending').length;
+            document.querySelector('.table-header').innerHTML = `
+                <i class="fas fa-clock"></i>
+                承認待ちの登録申請（${pendingCount}件）
+            `;
+
+            // Update stats
+            updateStats();
+        }
+
+        function updateStats() {
+            // Update statistics (in production, this would be real data)
+            const pendingCount = document.querySelectorAll('.status-pending').length;
+            document.querySelector('.stat-card .stat-number').textContent = pendingCount;
+        }
+
+        function approveCurrentApplication() {
+            if (currentApplicationId) {
+                approveApplication(currentApplicationId);
+            }
+        }
+
+        function rejectCurrentApplication() {
+            if (currentApplicationId) {
+                rejectApplication(currentApplicationId);
+            }
+        }
+
+        function showConfirmDialog(title, message, onConfirm) {
+            document.getElementById('confirm-title').textContent = title;
+            document.getElementById('confirm-message').textContent = message;
+            document.getElementById('confirm-yes').onclick = onConfirm;
+            document.getElementById('confirm-modal').style.display = 'flex';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirm-modal').style.display = 'none';
+        }
+
+        // Navigation functionality
+        document.querySelectorAll('.admin-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    document.querySelectorAll('.admin-nav a').forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // In production, this would load different content sections
+                    console.log('Navigate to:', this.getAttribute('href'));
+                }
+            });
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                if (e.target.id === 'application-modal') {
+                    currentApplicationId = null;
+                }
+            }
+        });
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if admin is logged in
+            const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+            if (!adminUser.email) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Load applications from API
+            loadApplications();
+        });
+        
+        // Auto-refresh data every 30 seconds
+        setInterval(() => {
+            console.log('Auto-refreshing admin data...');
+            loadApplications(); // Fetch latest data from API
+        }, 30000);
+    </script>
+</body>
+</html>

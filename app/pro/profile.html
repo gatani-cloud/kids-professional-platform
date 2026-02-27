@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">プロフィール - Kids Professional Platform</title>
+    <meta name="description" id="page-description" content="子ども向けサービスの専門家プロフィール">
+    
+    <!-- OGP Tags (will be updated by JavaScript) -->
+    <meta property="og:title" id="og-title" content="Kids Professional Platform">
+    <meta property="og:description" id="og-description" content="子ども向けサービスの専門家">
+    <meta property="og:image" id="og-image" content="/website/images/og-default.jpg">
+    <meta property="og:url" id="og-url" content="">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Kids Professional Platform">
+    
+    <link rel="stylesheet" href="../../website/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .profile-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .profile-info h1 {
+            color: #333;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-subtitle {
+            color: #4CAF50;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            color: #4CAF50;
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-tag {
+            background: #4CAF50;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .profile-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            color: #4CAF50;
+            margin-right: 0.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: #f0f8ff;
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .sidebar-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .pricing-info {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .pricing-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .social-link.instagram { background: #E4405F; }
+        .social-link.twitter { background: #1DA1F2; }
+        .social-link.youtube { background: #FF0000; }
+        .social-link.website { background: #333; }
+        
+        .verification-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
+        
+        .verification-badge i {
+            margin-right: 0.3rem;
+        }
+        
+        .back-button {
+            margin-bottom: 2rem;
+        }
+        
+        .back-button a {
+            color: #4CAF50;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-button a:hover {
+            color: #45a049;
+        }
+        
+        .back-button i {
+            margin-right: 0.5rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: #666;
+        }
+        
+        .loading i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 4rem;
+            color: #666;
+        }
+        
+        .error i {
+            font-size: 3rem;
+            color: #ff4444;
+            margin-bottom: 1rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .profile-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+                font-size: 3rem;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                justify-content: center;
+            }
+            
+            .profile-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><a href="../../website/index.html" style="color: inherit; text-decoration: none;">Kids Professional Platform</a></h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../website/index.html">ホーム</a></li>
+                    <li><a href="../directory.html">プロフェッショナル一覧</a></li>
+                    <li><a href="../register.html" class="btn-signup">プロ登録</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <div class="back-button">
+            <a href="../directory.html"><i class="fas fa-arrow-left"></i> プロフェッショナル一覧に戻る</a>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <h3>プロフィール読み込み中...</h3>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>プロフィールが見つかりません</h3>
+            <p>指定されたプロフェッショナルは存在しないか、現在非公開です。</p>
+        </div>
+
+        <!-- Profile Content (will be populated by JavaScript) -->
+        <div id="profile-content" style="display: none;">
+            <!-- Content will be inserted here -->
+        </div>
+    </div>
+
+    <script src="../../website/js/script.js"></script>
+    <script>
+        let currentProfessional = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const professionalId = urlParams.get('id');
+            
+            if (professionalId) {
+                loadProfessional(professionalId);
+            } else {
+                showError();
+            }
+        });
+
+        function loadProfessional(id) {
+            fetch(`/api/professionals/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Professional not found');
+                    }
+                    return response.json();
+                })
+                .then(professional => {
+                    currentProfessional = professional;
+                    renderProfile(professional);
+                    updateMetaTags(professional);
+                })
+                .catch(error => {
+                    console.error('Error loading professional:', error);
+                    showError();
+                });
+        }
+
+        function renderProfile(pro) {
+            const content = document.getElementById('profile-content');
+            
+            content.innerHTML = `
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-image">
+                        ${pro.profile_image_url ? 
+                            `<img src="${pro.profile_image_url}" alt="${pro.display_name}">` :
+                            getAvatarIcon(pro.categories)
+                        }
+                    </div>
+                    <div class="profile-info">
+                        <h1>${escapeHtml(pro.display_name)} <span class="verification-badge"><i class="fas fa-check"></i> 認証済み</span></h1>
+                        <div class="profile-subtitle">${escapeHtml(pro.categories || '')}</div>
+                        
+                        <div class="categories">
+                            ${pro.categories ? pro.categories.split(',').map(cat => 
+                                `<span class="category-tag">${escapeHtml(cat.trim())}</span>`
+                            ).join('') : ''}
+                        </div>
+                        
+                        <div class="profile-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${escapeHtml(pro.activity_area || '')}
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-child"></i>
+                                ${getAgeRange(pro.target_age_min, pro.target_age_max)}
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-${pro.service_format === 'online' ? 'laptop' : pro.service_format === 'offline' ? 'home' : 'laptop'}"></i>
+                                ${getServiceFormat(pro.service_format)}
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-eye"></i>
+                                ${pro.view_count || 0}回閲覧
+                            </div>
+                        </div>
+
+                        <div class="contact-buttons">
+                            <a href="#" class="btn btn-primary" onclick="contactPro()">
+                                <i class="fas fa-envelope"></i> お問い合わせ
+                            </a>
+                            <a href="#" class="btn btn-secondary" onclick="schedulePro()">
+                                <i class="fas fa-calendar"></i> 相談予約
+                            </a>
+                            <a href="#" class="btn btn-outline" onclick="sharePro()">
+                                <i class="fas fa-share"></i> シェア
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <div class="main-content">
+                        <!-- About Section -->
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-user"></i>
+                                自己紹介
+                            </h2>
+                            <div style="line-height: 1.7; color: #555;">
+                                ${formatText(pro.bio || '')}
+                            </div>
+                        </div>
+
+                        ${pro.teaching_philosophy ? `
+                        <!-- Teaching Philosophy -->
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-heart"></i>
+                                指導方針・教育理念
+                            </h2>
+                            <div style="line-height: 1.7; color: #555;">
+                                ${formatText(pro.teaching_philosophy)}
+                            </div>
+                        </div>
+                        ` : ''}
+
+                        ${pro.skills ? `
+                        <!-- Skills & Qualifications -->
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-certificate"></i>
+                                スキル・資格
+                            </h2>
+                            <div class="skills-list">
+                                ${pro.skills.split(',').map(skill => 
+                                    `<span class="skill-tag">${escapeHtml(skill.trim())}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <!-- Pricing -->
+                        <div class="sidebar-section">
+                            <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                                <i class="fas fa-yen-sign"></i> 料金目安
+                            </h3>
+                            <div class="pricing-info">
+                                <div class="pricing-amount">${getPricing(pro.hourly_rate_min, pro.hourly_rate_max)}</div>
+                                <div class="pricing-note">${getPricingUnit(pro.hourly_rate_min, pro.hourly_rate_max)}</div>
+                            </div>
+                            ${pro.price_note ? `
+                            <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 1rem;">
+                                ${escapeHtml(pro.price_note)}
+                            </p>
+                            ` : ''}
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="sidebar-section">
+                            <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                                <i class="fas fa-info-circle"></i> 対応詳細
+                            </h3>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                                    <span style="color: #666;">サービス形式</span>
+                                    <span style="font-weight: 500;">${getServiceFormat(pro.service_format)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                                    <span style="color: #666;">対象年齢</span>
+                                    <span style="font-weight: 500;">${getAgeRange(pro.target_age_min, pro.target_age_max)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                                    <span style="color: #666;">活動エリア</span>
+                                    <span style="font-weight: 500;">${escapeHtml(pro.activity_area || '')}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${hasSocialLinks(pro) ? `
+                        <!-- Social Links -->
+                        <div class="sidebar-section">
+                            <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                                <i class="fas fa-share-alt"></i> SNS・関連リンク
+                            </h3>
+                            <div class="social-links">
+                                ${getSocialLinks(pro)}
+                            </div>
+                        </div>
+                        ` : ''}
+
+                        <!-- Safety Info -->
+                        <div class="sidebar-section">
+                            <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                                <i class="fas fa-shield-alt"></i> 安全・信頼
+                            </h3>
+                            <div style="text-align: center;">
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #4CAF50;">
+                                    <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                                    身元確認済み
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #4CAF50;">
+                                    <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                                    資格証明確認済み
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #4CAF50;">
+                                    <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                                    運営審査通過済み
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: center; color: #4CAF50;">
+                                    <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                                    損害保険対応
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Show content and hide loading
+            document.getElementById('loading').style.display = 'none';
+            content.style.display = 'block';
+        }
+
+        function showError() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+        }
+
+        function updateMetaTags(pro) {
+            document.getElementById('page-title').textContent = `${pro.display_name} - ${pro.categories || ''} | Kids Professional Platform`;
+            document.getElementById('page-description').content = `${pro.display_name}さんのプロフィール。${pro.bio ? pro.bio.substring(0, 100) : ''}`;
+            
+            document.getElementById('og-title').content = `${pro.display_name} - ${pro.categories || ''}`;
+            document.getElementById('og-description').content = pro.bio ? pro.bio.substring(0, 150) : '';
+            if (pro.profile_image_url) {
+                document.getElementById('og-image').content = window.location.origin + pro.profile_image_url;
+            }
+            document.getElementById('og-url').content = window.location.href;
+        }
+
+        // Helper functions
+        function getAvatarIcon(categories) {
+            if (!categories) return '<i class="fas fa-user"></i>';
+            if (categories.includes('音楽')) return '<i class="fas fa-music"></i>';
+            if (categories.includes('学習') || categories.includes('教育')) return '<i class="fas fa-graduation-cap"></i>';
+            if (categories.includes('企業支援')) return '<i class="fas fa-laptop-code"></i>';
+            if (categories.includes('保育')) return '<i class="fas fa-baby"></i>';
+            if (categories.includes('スポーツ')) return '<i class="fas fa-running"></i>';
+            return '<i class="fas fa-user"></i>';
+        }
+
+        function getAgeRange(min, max) {
+            if (!min && !max) return '年齢問わず';
+            if (!min) return `${max}歳以下`;
+            if (!max) return `${min}歳以上`;
+            return `${min}歳〜${max}歳`;
+        }
+
+        function getServiceFormat(format) {
+            switch(format) {
+                case 'online': return 'オンラインのみ';
+                case 'offline': return '対面のみ';
+                case 'both': return 'オンライン・対面両方対応';
+                default: return '要相談';
+            }
+        }
+
+        function getPricing(min, max) {
+            if (!min && !max) return '要相談';
+            if (min && max) {
+                if (min >= 50000) {
+                    return `${(min/10000).toFixed(0)}万円〜${(max/10000).toFixed(0)}万円`;
+                } else {
+                    return `${min.toLocaleString()}円〜${max.toLocaleString()}円`;
+                }
+            }
+            if (min) {
+                if (min >= 50000) {
+                    return `${(min/10000).toFixed(0)}万円〜`;
+                } else {
+                    return `${min.toLocaleString()}円〜`;
+                }
+            }
+            return '要相談';
+        }
+
+        function getPricingUnit(min, max) {
+            if (!min && !max) return '';
+            if (min >= 50000 || max >= 50000) return '/プロジェクト';
+            return '/時間';
+        }
+
+        function hasSocialLinks(pro) {
+            return pro.instagram_url || pro.twitter_url || pro.facebook_url || pro.youtube_url || pro.website_url;
+        }
+
+        function getSocialLinks(pro) {
+            let links = '';
+            if (pro.instagram_url) {
+                links += `<a href="${pro.instagram_url}" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a>`;
+            }
+            if (pro.twitter_url) {
+                links += `<a href="${pro.twitter_url}" target="_blank" class="social-link twitter"><i class="fab fa-twitter"></i></a>`;
+            }
+            if (pro.facebook_url) {
+                links += `<a href="${pro.facebook_url}" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i></a>`;
+            }
+            if (pro.youtube_url) {
+                links += `<a href="${pro.youtube_url}" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i></a>`;
+            }
+            if (pro.website_url) {
+                links += `<a href="${pro.website_url}" target="_blank" class="social-link website"><i class="fas fa-globe"></i></a>`;
+            }
+            return links;
+        }
+
+        function formatText(text) {
+            return escapeHtml(text).replace(/\n/g, '<br>');
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function contactPro() {
+            alert('お問い合わせ機能はStep 2で実装予定です。現在はSNSリンクからご連絡ください。');
+        }
+
+        function schedulePro() {
+            alert('予約機能はStep 2で実装予定です。');
+        }
+
+        function sharePro() {
+            if (navigator.share && currentProfessional) {
+                navigator.share({
+                    title: `${currentProfessional.display_name} - ${currentProfessional.categories}`,
+                    text: currentProfessional.bio,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback to clipboard
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('プロフィールURLをクリップボードにコピーしました！');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

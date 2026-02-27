@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフェッショナル登録 - Kids Professional Platform</title>
+    <link rel="stylesheet" href="../website/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .registration-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.half {
+            grid-column: span 1;
+        }
+        
+        .form-group.full {
+            grid-column: span 2;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .required {
+            color: #ff4444;
+            margin-left: 0.3rem;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background: white;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .checkbox-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 0.5rem;
+            transform: scale(1.2);
+        }
+        
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: #4CAF50;
+        }
+        
+        .file-upload-icon {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .range-group {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .error-message {
+            color: #ff4444;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #ff4444;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .range-group {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><a href="../website/index.html" style="color: inherit; text-decoration: none;">Kids Professional Platform</a></h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../website/index.html">ホーム</a></li>
+                    <li><a href="directory.html">プロフェッショナル一覧</a></li>
+                    <li><a href="login.html" class="btn-login">ログイン</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="registration-container">
+        <div class="form-container">
+            <div class="form-header">
+                <h1><i class="fas fa-user-plus"></i> プロフェッショナル登録</h1>
+                <p>子ども向けサービスのプロフェッショナルとして参加しませんか？<br>
+                まずは基本情報を入力してください。審査通過後、プロフィールが公開されます。</p>
+            </div>
+
+            <div class="success-message" id="success-message">
+                <i class="fas fa-check-circle"></i> 登録申請が完了しました。審査結果をメールでお知らせいたします。
+            </div>
+
+            <form id="registration-form" class="form-grid">
+                <!-- 基本情報セクション -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> 基本情報</h3>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label">メールアドレス <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label">パスワード <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" class="form-input" required minlength="8">
+                    <div class="error-message" id="password-error"></div>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label">表示名（ニックネーム可） <span class="required">*</span></label>
+                    <input type="text" id="display_name" name="display_name" class="form-input" required>
+                    <div class="error-message" id="display_name-error"></div>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label">お名前（本名）</label>
+                    <input type="text" id="full_name" name="full_name" class="form-input">
+                    <small style="color: #666;">審査・連絡用。公開されません。</small>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label">電話番号</label>
+                    <input type="tel" id="phone" name="phone" class="form-input">
+                    <small style="color: #666;">緊急時連絡用。公開されません。</small>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label">活動エリア <span class="required">*</span></label>
+                    <select id="activity_area" name="activity_area" class="form-select" required>
+                        <option value="">選択してください</option>
+                        <option value="北海道">北海道</option>
+                        <option value="東北地方">東北地方</option>
+                        <option value="関東地方">関東地方</option>
+                        <option value="中部地方">中部地方</option>
+                        <option value="関西地方">関西地方</option>
+                        <option value="中国地方">中国地方</option>
+                        <option value="四国地方">四国地方</option>
+                        <option value="九州・沖縄">九州・沖縄</option>
+                        <option value="全国">全国</option>
+                        <option value="オンラインのみ">オンラインのみ</option>
+                    </select>
+                </div>
+
+                <!-- 対応年齢 -->
+                <div class="form-group full">
+                    <label class="form-label">対応年齢層</label>
+                    <div class="range-group">
+                        <select id="target_age_min" name="target_age_min" class="form-select">
+                            <option value="">下限</option>
+                            <option value="0">0歳</option>
+                            <option value="1">1歳</option>
+                            <option value="2">2歳</option>
+                            <option value="3">3歳</option>
+                            <option value="6">小学生</option>
+                            <option value="12">中学生</option>
+                            <option value="15">高校生</option>
+                        </select>
+                        <span>〜</span>
+                        <select id="target_age_max" name="target_age_max" class="form-select">
+                            <option value="">上限</option>
+                            <option value="2">2歳</option>
+                            <option value="5">幼稚園</option>
+                            <option value="11">小学生</option>
+                            <option value="14">中学生</option>
+                            <option value="17">高校生</option>
+                            <option value="18">18歳以上</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- カテゴリ選択 -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-tags"></i> サービスカテゴリ</h3>
+                    <label class="form-label">専門分野 <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_education" name="categories" value="education">
+                            <label for="cat_education">学習・教育</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_childcare" name="categories" value="childcare">
+                            <label for="cat_childcare">保育・託児</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_music" name="categories" value="music-arts">
+                            <label for="cat_music">音楽・芸術</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_sports" name="categories" value="sports">
+                            <label for="cat_sports">スポーツ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_language" name="categories" value="language">
+                            <label for="cat_language">語学</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_steam" name="categories" value="steam">
+                            <label for="cat_steam">STEAM教育</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_entertainment" name="categories" value="entertainment">
+                            <label for="cat_entertainment">エンターテイメント</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cat_business" name="categories" value="business-support">
+                            <label for="cat_business">企業支援（Web・動画制作等）</label>
+                        </div>
+                    </div>
+                    <div class="error-message" id="categories-error"></div>
+                </div>
+
+                <!-- サービス形式 -->
+                <div class="form-group full">
+                    <label class="form-label">対応形式 <span class="required">*</span></label>
+                    <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center;">
+                            <input type="radio" name="service_format" value="offline" style="margin-right: 0.5rem;">
+                            対面のみ
+                        </label>
+                        <label style="display: flex; align-items: center;">
+                            <input type="radio" name="service_format" value="online" style="margin-right: 0.5rem;">
+                            オンラインのみ
+                        </label>
+                        <label style="display: flex; align-items: center;">
+                            <input type="radio" name="service_format" value="both" style="margin-right: 0.5rem;" checked>
+                            両方対応可能
+                        </label>
+                    </div>
+                </div>
+
+                <!-- プロフィール情報 -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-user"></i> プロフィール情報</h3>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">自己紹介 <span class="required">*</span></label>
+                    <textarea id="bio" name="bio" class="form-textarea" required 
+                              placeholder="どのような経験や想いでサービスを提供しているか、保護者の方々にアピールしてください。"></textarea>
+                    <div class="error-message" id="bio-error"></div>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">指導方針・教育理念</label>
+                    <textarea id="teaching_philosophy" name="teaching_philosophy" class="form-textarea"
+                              placeholder="お子さまへの指導で大切にしていることや、教育に対する考え方をお聞かせください。"></textarea>
+                </div>
+
+                <!-- 資格・スキル -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-certificate"></i> 資格・スキル</h3>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">保有資格・スキル</label>
+                    <textarea id="skills" name="skills" class="form-textarea"
+                              placeholder="例：保育士資格、小学校教諭免許、TOEIC 900点、ピアノ指導歴10年など"></textarea>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">資格証明書（任意）</label>
+                    <div class="file-upload">
+                        <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                        <p>証明書画像をアップロード（JPG, PNG, PDF対応）</p>
+                        <input type="file" id="certifications" name="certifications" multiple accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('certifications').click();">ファイルを選択</button>
+                    </div>
+                </div>
+
+                <!-- 料金情報 -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-yen-sign"></i> 料金情報（目安）</h3>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">時間あたり料金（目安）</label>
+                    <div class="range-group">
+                        <input type="number" id="hourly_rate_min" name="hourly_rate_min" class="form-input" placeholder="最低料金" min="0">
+                        <span>円 〜</span>
+                        <input type="number" id="hourly_rate_max" name="hourly_rate_max" class="form-input" placeholder="最高料金" min="0">
+                        <span>円</span>
+                    </div>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">料金に関する補足</label>
+                    <textarea id="price_note" name="price_note" class="form-textarea"
+                              placeholder="例：交通費別途、教材費込み、初回お試し価格ありなど"></textarea>
+                </div>
+
+                <!-- SNS・外部リンク -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-link"></i> SNS・外部リンク（任意）</h3>
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label"><i class="fab fa-instagram"></i> Instagram</label>
+                    <input type="url" id="instagram_url" name="instagram_url" class="form-input" placeholder="https://instagram.com/username">
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label"><i class="fab fa-twitter"></i> X (Twitter)</label>
+                    <input type="url" id="twitter_url" name="twitter_url" class="form-input" placeholder="https://x.com/username">
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label"><i class="fab fa-facebook"></i> Facebook</label>
+                    <input type="url" id="facebook_url" name="facebook_url" class="form-input" placeholder="https://facebook.com/page">
+                </div>
+
+                <div class="form-group half">
+                    <label class="form-label"><i class="fab fa-youtube"></i> YouTube</label>
+                    <input type="url" id="youtube_url" name="youtube_url" class="form-input" placeholder="https://youtube.com/channel">
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label"><i class="fas fa-globe"></i> ウェブサイト・ブログ</label>
+                    <input type="url" id="website_url" name="website_url" class="form-input" placeholder="https://example.com">
+                </div>
+
+                <!-- プロフィール画像 -->
+                <div class="form-group full">
+                    <h3 style="color: #4CAF50; margin-bottom: 1rem;"><i class="fas fa-camera"></i> プロフィール画像</h3>
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label">プロフィール画像</label>
+                    <div class="file-upload">
+                        <i class="fas fa-camera file-upload-icon"></i>
+                        <p>顔写真または活動写真をアップロード</p>
+                        <input type="file" id="profile_image" name="profile_image" accept="image/*" style="display: none;">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('profile_image').click();">画像を選択</button>
+                    </div>
+                </div>
+
+                <!-- 利用規約同意 -->
+                <div class="form-group full">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <label style="display: flex; align-items: flex-start;">
+                            <input type="checkbox" id="terms_agreed" name="terms_agreed" required style="margin-right: 0.5rem; margin-top: 0.2rem;">
+                            <span>
+                                <a href="#" target="_blank" style="color: #4CAF50;">利用規約</a>および
+                                <a href="#" target="_blank" style="color: #4CAF50;">プライバシーポリシー</a>に同意します <span class="required">*</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 送信ボタン -->
+                <div class="submit-section">
+                    <button type="submit" class="btn btn-primary large">
+                        <i class="fas fa-paper-plane"></i> 登録申請を送信
+                    </button>
+                    <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        送信後、運営チームが申請内容を審査いたします。<br>
+                        審査結果は1-3営業日以内にメールでお知らせいたします。
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../website/js/script.js"></script>
+    <script>
+        // Registration Form Specific JavaScript
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            clearAllErrors();
+            
+            // Validate form
+            if (validateRegistrationForm()) {
+                // Prepare form data
+                const formData = new FormData();
+                
+                // Add all form fields
+                const formElements = this.elements;
+                for (let i = 0; i < formElements.length; i++) {
+                    const element = formElements[i];
+                    
+                    if (element.name) {
+                        if (element.type === 'checkbox' && element.name === 'categories') {
+                            if (element.checked) {
+                                formData.append('categories', element.value);
+                            }
+                        } else if (element.type === 'radio') {
+                            if (element.checked) {
+                                formData.set(element.name, element.value);
+                            }
+                        } else if (element.type === 'file') {
+                            if (element.files.length > 0) {
+                                if (element.multiple) {
+                                    for (let file of element.files) {
+                                        formData.append(element.name, file);
+                                    }
+                                } else {
+                                    formData.set(element.name, element.files[0]);
+                                }
+                            }
+                        } else if (element.type !== 'checkbox') {
+                            formData.set(element.name, element.value);
+                        }
+                    }
+                }
+                
+                // Submit form to API
+                const submitButton = this.querySelector('button[type="submit"]');
+                setButtonLoading(submitButton, true);
+                
+                // Convert FormData to JSON for new API
+                const formObject = {};
+                for (let [key, value] of formData.entries()) {
+                    formObject[key] = value;
+                }
+                
+                fetch('/api/professionals', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formObject)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('success-message').style.display = 'block';
+                        this.style.display = 'none';
+                        document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        throw new Error(data.error || '登録に失敗しました');
+                    }
+                })
+                .catch(error => {
+                    console.error('Registration error:', error);
+                    alert('登録エラー: ' + error.message);
+                })
+                .finally(() => {
+                    setButtonLoading(submitButton, false);
+                });
+            }
+        });
+
+        function validateRegistrationForm() {
+            let isValid = true;
+            
+            // Required fields validation
+            const requiredFields = ['email', 'password', 'display_name', 'activity_area', 'bio'];
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (!field.value.trim()) {
+                    showError(fieldName, 'この項目は必須です');
+                    isValid = false;
+                }
+            });
+            
+            // Email validation
+            const email = document.getElementById('email').value;
+            if (email && !isValidEmail(email)) {
+                showError('email', '正しいメールアドレスを入力してください');
+                isValid = false;
+            }
+            
+            // Password validation
+            const password = document.getElementById('password').value;
+            if (password && password.length < 8) {
+                showError('password', 'パスワードは8文字以上で入力してください');
+                isValid = false;
+            }
+            
+            // Categories validation (at least one must be selected)
+            const categories = document.querySelectorAll('input[name="categories"]:checked');
+            if (categories.length === 0) {
+                showError('categories', '最低1つのカテゴリを選択してください');
+                isValid = false;
+            }
+            
+            // Terms agreement validation
+            const termsAgreed = document.getElementById('terms_agreed');
+            if (!termsAgreed.checked) {
+                showError('terms_agreed', '利用規約への同意が必要です');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function showError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + '-error');
+            
+            if (field) {
+                field.classList.add('error');
+            }
+            
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+
+        function clearAllErrors() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => {
+                error.style.display = 'none';
+                error.textContent = '';
+            });
+            
+            const errorFields = document.querySelectorAll('.form-input.error, .form-select.error, .form-textarea.error');
+            errorFields.forEach(field => {
+                field.classList.remove('error');
+            });
+        }
+
+        // File upload feedback
+        document.getElementById('certifications').addEventListener('change', function() {
+            const fileCount = this.files.length;
+            const uploadArea = this.closest('.file-upload');
+            const p = uploadArea.querySelector('p');
+            
+            if (fileCount > 0) {
+                p.textContent = `${fileCount}個のファイルが選択されました`;
+                uploadArea.style.borderColor = '#4CAF50';
+            } else {
+                p.textContent = '証明書画像をアップロード（JPG, PNG, PDF対応）';
+                uploadArea.style.borderColor = '#e0e0e0';
+            }
+        });
+
+        document.getElementById('profile_image').addEventListener('change', function() {
+            const file = this.files[0];
+            const uploadArea = this.closest('.file-upload');
+            const p = uploadArea.querySelector('p');
+            
+            if (file) {
+                p.textContent = `選択済み: ${file.name}`;
+                uploadArea.style.borderColor = '#4CAF50';
+            } else {
+                p.textContent = '顔写真または活動写真をアップロード';
+                uploadArea.style.borderColor = '#e0e0e0';
+            }
+        });
+
+        // Auto-update grid layout based on screen size
+        function updateFormLayout() {
+            const formGrid = document.querySelector('.form-grid');
+            const halfElements = document.querySelectorAll('.form-group.half');
+            
+            if (window.innerWidth <= 768) {
+                formGrid.style.gridTemplateColumns = '1fr';
+            } else {
+                formGrid.style.gridTemplateColumns = '1fr 1fr';
+            }
+        }
+
+        window.addEventListener('resize', updateFormLayout);
+        updateFormLayout();
+    </script>
+</body>
+</html>

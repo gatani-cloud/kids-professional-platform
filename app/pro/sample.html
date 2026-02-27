@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>田中美咲先生 - ピアノ・音楽指導 | Kids Professional Platform</title>
+    <meta name="description" content="東京都在住のピアノ・音楽指導の専門家。10年の指導経験を持ち、3歳〜中学生まで幅広く対応。楽しみながら上達できる指導方針で人気。">
+    
+    <!-- OGP Tags for Social Sharing -->
+    <meta property="og:title" content="田中美咲先生 - ピアノ・音楽指導 | Kids Professional Platform">
+    <meta property="og:description" content="東京都在住のピアノ・音楽指導の専門家。10年の指導経験を持ち、3歳〜中学生まで幅広く対応。">
+    <meta property="og:image" content="/images/profiles/sample-teacher.jpg">
+    <meta property="og:url" content="https://kids-platform.jp/pro/sample">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Kids Professional Platform">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="田中美咲先生 - ピアノ・音楽指導">
+    <meta name="twitter:description" content="東京都在住のピアノ・音楽指導の専門家。10年の指導経験を持ち、3歳〜中学生まで幅広く対応。">
+    <meta name="twitter:image" content="/images/profiles/sample-teacher.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "田中美咲",
+        "jobTitle": "ピアノ・音楽指導講師",
+        "description": "東京都在住のピアノ・音楽指導の専門家。10年の指導経験を持ち、3歳〜中学生まで幅広く対応。",
+        "image": "/images/profiles/sample-teacher.jpg",
+        "url": "https://kids-platform.jp/pro/sample",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "東京都"
+        },
+        "offers": {
+            "@type": "Offer",
+            "description": "ピアノ・音楽指導レッスン",
+            "priceRange": "3000-5000円/時間"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../website/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .profile-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .profile-info h1 {
+            color: #333;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-subtitle {
+            color: #4CAF50;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            color: #4CAF50;
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-tag {
+            background: #4CAF50;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .profile-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            color: #4CAF50;
+            margin-right: 0.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: #f0f8ff;
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .sidebar-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .pricing-info {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .pricing-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .social-link.instagram { background: #E4405F; }
+        .social-link.twitter { background: #1DA1F2; }
+        .social-link.youtube { background: #FF0000; }
+        .social-link.website { background: #333; }
+        
+        .verification-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
+        
+        .verification-badge i {
+            margin-right: 0.3rem;
+        }
+        
+        .back-button {
+            margin-bottom: 2rem;
+        }
+        
+        .back-button a {
+            color: #4CAF50;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-button a:hover {
+            color: #45a049;
+        }
+        
+        .back-button i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .profile-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+                font-size: 3rem;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                justify-content: center;
+            }
+            
+            .profile-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><a href="../../website/index.html" style="color: inherit; text-decoration: none;">Kids Professional Platform</a></h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../website/index.html">ホーム</a></li>
+                    <li><a href="../directory.html">プロフェッショナル一覧</a></li>
+                    <li><a href="../register.html" class="btn-signup">プロ登録</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <div class="back-button">
+            <a href="../directory.html"><i class="fas fa-arrow-left"></i> プロフェッショナル一覧に戻る</a>
+        </div>
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-image">
+                <i class="fas fa-music"></i>
+            </div>
+            <div class="profile-info">
+                <h1>田中美咲先生 <span class="verification-badge"><i class="fas fa-check"></i> 認証済み</span></h1>
+                <div class="profile-subtitle">ピアノ・音楽指導講師</div>
+                
+                <div class="categories">
+                    <span class="category-tag">音楽・芸術</span>
+                    <span class="category-tag">ピアノ</span>
+                </div>
+                
+                <div class="profile-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        東京都内・近隣地域
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-child"></i>
+                        3歳 〜 中学生
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-laptop"></i>
+                        オンライン・対面両方対応
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-star"></i>
+                        指導歴10年
+                    </div>
+                </div>
+
+                <div class="contact-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> 相談・問い合わせ
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-calendar"></i> スケジュール確認
+                    </a>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-share"></i> シェア
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <div class="main-content">
+                <!-- About Section -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        自己紹介
+                    </h2>
+                    <p style="line-height: 1.7; color: #555;">
+                        音楽大学でピアノを専攻し、卒業後から10年間にわたって子どもたちにピアノの指導をしています。
+                        これまでに100名以上のお子さまを指導し、コンクール入賞者も多数輩出しております。
+                    </p>
+                    <p style="line-height: 1.7; color: #555; margin-top: 1rem;">
+                        「楽しく学ぶ」ことを大切にし、一人ひとりの個性や学習ペースに合わせた指導を心がけています。
+                        音楽を通じて、お子さまの感性や表現力、集中力の向上をお手伝いいたします。
+                    </p>
+                </div>
+
+                <!-- Teaching Philosophy -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-heart"></i>
+                        指導方針
+                    </h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: flex-start;">
+                            <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 0.5rem; margin-top: 0.2rem;"></i>
+                            <span><strong>個別対応</strong>：お子さま一人ひとりの個性とペースに合わせたオーダーメイドレッスン</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: flex-start;">
+                            <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 0.5rem; margin-top: 0.2rem;"></i>
+                            <span><strong>楽しさ重視</strong>：ゲーム要素やお子さまの好きな曲を取り入れ、楽しみながら上達</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: flex-start;">
+                            <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 0.5rem; margin-top: 0.2rem;"></i>
+                            <span><strong>基礎重視</strong>：正しい姿勢・指使いから音楽理論まで、しっかりとした基礎作り</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start;">
+                            <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 0.5rem; margin-top: 0.2rem;"></i>
+                            <span><strong>成長実感</strong>：定期的な発表の機会を設け、達成感と自信を育む</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skills & Qualifications -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-certificate"></i>
+                        資格・スキル
+                    </h2>
+                    <div class="skills-list">
+                        <span class="skill-tag">中学校教諭一種免許状（音楽）</span>
+                        <span class="skill-tag">高等学校教諭一種免許状（音楽）</span>
+                        <span class="skill-tag">ピアノ演奏グレード3級</span>
+                        <span class="skill-tag">指導グレード4級</span>
+                        <span class="skill-tag">リトミック指導資格</span>
+                        <span class="skill-tag">英語指導経験</span>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">指導実績</h4>
+                        <ul style="color: #666; line-height: 1.6;">
+                            <li>• 指導歴10年、指導生徒数100名以上</li>
+                            <li>• コンクール入賞者5名輩出</li>
+                            <li>• 音楽発表会開催経験多数</li>
+                            <li>• 0歳からシニアまで幅広い年齢層の指導経験</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sample Lessons -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-play-circle"></i>
+                        レッスン例・ポートフォリオ
+                    </h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <i class="fas fa-video" style="font-size: 2rem; color: #4CAF50; margin-bottom: 0.5rem;"></i>
+                            <h5 style="margin-bottom: 0.5rem;">レッスン動画</h5>
+                            <p style="font-size: 0.9rem; color: #666;">実際のレッスン風景</p>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <i class="fas fa-music" style="font-size: 2rem; color: #4CAF50; margin-bottom: 0.5rem;"></i>
+                            <h5 style="margin-bottom: 0.5rem;">演奏動画</h5>
+                            <p style="font-size: 0.9rem; color: #666;">講師による演奏例</p>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <i class="fas fa-certificate" style="font-size: 2rem; color: #4CAF50; margin-bottom: 0.5rem;"></i>
+                            <h5 style="margin-bottom: 0.5rem;">資格証明書</h5>
+                            <p style="font-size: 0.9rem; color: #666;">取得資格の証明</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Pricing -->
+                <div class="sidebar-section">
+                    <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                        <i class="fas fa-yen-sign"></i> 料金目安
+                    </h3>
+                    <div class="pricing-info">
+                        <div class="pricing-amount">3,000円〜5,000円</div>
+                        <div class="pricing-note">1時間あたり</div>
+                    </div>
+                    <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 1rem;">
+                        ※ レッスン内容・回数により変動<br>
+                        ※ 交通費別途（対面の場合）
+                    </p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="sidebar-section">
+                    <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                        <i class="fas fa-info-circle"></i> 対応詳細
+                    </h3>
+                    <div style="space-y: 0.5rem;">
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                            <span style="color: #666;">レッスン時間</span>
+                            <span style="font-weight: 500;">30分〜90分</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                            <span style="color: #666;">レッスン形式</span>
+                            <span style="font-weight: 500;">個人・グループ</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                            <span style="color: #666;">体験レッスン</span>
+                            <span style="font-weight: 500; color: #4CAF50;">あり（2,000円）</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                            <span style="color: #666;">対応時間</span>
+                            <span style="font-weight: 500;">平日夕方・土日</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="sidebar-section">
+                    <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                        <i class="fas fa-share-alt"></i> SNS・関連リンク
+                    </h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link website">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Safety Info -->
+                <div class="sidebar-section">
+                    <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                        <i class="fas fa-shield-alt"></i> 安全・信頼
+                    </h3>
+                    <div style="text-align: center;">
+                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #4CAF50;">
+                            <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                            身元確認済み
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #4CAF50;">
+                            <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                            資格証明確認済み
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #4CAF50;">
+                            <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                            犯罪履歴チェック済み
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; color: #4CAF50;">
+                            <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                            損害保険加入済み
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 2rem; border-radius: 15px; max-width: 400px; width: 90%;">
+            <h3 style="margin-bottom: 1rem; text-align: center;">プロフィールをシェア</h3>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                <button onclick="shareToTwitter()" style="background: #1DA1F2; color: white; border: none; padding: 0.8rem 1rem; border-radius: 8px; cursor: pointer;">
+                    <i class="fab fa-twitter"></i> Twitter
+                </button>
+                <button onclick="shareToFacebook()" style="background: #4267B2; color: white; border: none; padding: 0.8rem 1rem; border-radius: 8px; cursor: pointer;">
+                    <i class="fab fa-facebook"></i> Facebook
+                </button>
+                <button onclick="copyUrl()" style="background: #333; color: white; border: none; padding: 0.8rem 1rem; border-radius: 8px; cursor: pointer;">
+                    <i class="fas fa-copy"></i> URLコピー
+                </button>
+            </div>
+            <button onclick="closeShareModal()" style="background: #ccc; color: #333; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; width: 100%;">
+                閉じる
+            </button>
+        </div>
+    </div>
+
+    <script src="../../website/js/script.js"></script>
+    <script>
+        // Share functionality
+        function openShareModal() {
+            document.getElementById('share-modal').style.display = 'flex';
+        }
+
+        function closeShareModal() {
+            document.getElementById('share-modal').style.display = 'none';
+        }
+
+        function shareToTwitter() {
+            const text = '田中美咲先生 - ピアノ・音楽指導講師のプロフィール';
+            const url = window.location.href;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            window.open(twitterUrl, '_blank');
+        }
+
+        function shareToFacebook() {
+            const url = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(facebookUrl, '_blank');
+        }
+
+        function copyUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('URLがクリップボードにコピーされました！');
+            });
+        }
+
+        // Add event listener to share button
+        document.querySelector('.btn-outline').addEventListener('click', function(e) {
+            e.preventDefault();
+            openShareModal();
+        });
+
+        // View tracking (would connect to analytics in production)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track page view
+            console.log('Profile view tracked:', window.location.pathname);
+            
+            // Simulate view count increment
+            // In production, this would be an API call
+        });
+
+        // Contact button handlers (would connect to messaging system in Step 2)
+        document.querySelector('.btn-primary').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('メッセージ機能は Step 2 で実装予定です。現在は profile に記載の SNS などでお気軽にお問い合わせください。');
+        });
+
+        document.querySelectorAll('.btn-secondary')[0].addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('スケジュール機能は Step 2 で実装予定です。');
+        });
+
+        // Mobile responsive adjustments
+        function adjustMobileLayout() {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.profile-header').style.gridTemplateColumns = '1fr';
+                document.querySelector('.profile-content').style.gridTemplateColumns = '1fr';
+            } else {
+                document.querySelector('.profile-header').style.gridTemplateColumns = '200px 1fr';
+                document.querySelector('.profile-content').style.gridTemplateColumns = '2fr 1fr';
+            }
+        }
+
+        window.addEventListener('resize', adjustMobileLayout);
+        adjustMobileLayout();
+    </script>
+</body>
+</html>

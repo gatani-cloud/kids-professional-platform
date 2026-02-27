@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>管理者ログイン - Kids Professional Platform</title>
+    <link rel="stylesheet" href="../../website/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+        
+        .login-icon i {
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .login-title {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: #ff4444;
+            box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
+        }
+        
+        .error-message {
+            color: #ff4444;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        
+        .login-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-button:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .login-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+        
+        .remember-me input {
+            margin-right: 0.5rem;
+        }
+        
+        .forgot-password {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .forgot-password:hover {
+            color: #45a049;
+            text-decoration: underline;
+        }
+        
+        .back-to-site {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .back-to-site a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .back-to-site a:hover {
+            color: #4CAF50;
+        }
+        
+        .security-notice {
+            background: #f8f9fa;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .security-notice h4 {
+            color: #4CAF50;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .security-notice p {
+            color: #666;
+            font-size: 0.8rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            .login-title {
+                font-size: 1.3rem;
+            }
+            
+            .remember-forgot {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h1 class="login-title">管理者ログイン</h1>
+            <p class="login-subtitle">Kids Professional Platform 管理者専用</p>
+        </div>
+
+        <div class="security-notice">
+            <h4><i class="fas fa-shield-alt"></i> セキュリティについて</h4>
+            <p>このページは管理者専用です。不正アクセスは記録され、法的措置の対象となる場合があります。</p>
+        </div>
+
+        <form class="login-form" id="login-form">
+            <div class="form-group">
+                <label for="email" class="form-label">
+                    <i class="fas fa-envelope"></i> メールアドレス
+                </label>
+                <input type="email" id="email" name="email" class="form-input" required 
+                       placeholder="admin@kids-platform.jp">
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock"></i> パスワード
+                </label>
+                <input type="password" id="password" name="password" class="form-input" required>
+                <div class="error-message" id="password-error"></div>
+            </div>
+
+            <div class="remember-forgot">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    ログイン状態を保持
+                </label>
+                <a href="#" class="forgot-password">パスワードを忘れた方</a>
+            </div>
+
+            <button type="submit" class="login-button">
+                <i class="fas fa-sign-in-alt"></i> ログイン
+            </button>
+        </form>
+
+        <div class="back-to-site">
+            <a href="../../website/index.html">
+                <i class="fas fa-arrow-left"></i> サイトトップに戻る
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            clearErrors();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Basic validation
+            if (!email) {
+                showError('email', 'メールアドレスを入力してください');
+                return;
+            }
+            
+            if (!password) {
+                showError('password', 'パスワードを入力してください');
+                return;
+            }
+            
+            // Set loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            setButtonLoading(submitButton, true);
+            
+            // Call admin login API (with cache buster)
+            fetch('/api/admin-login?' + Date.now(), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                setButtonLoading(submitButton, false);
+                
+                if (data.success) {
+                    // Successful login
+                    localStorage.setItem('admin_logged_in', 'true');
+                    localStorage.setItem('admin_user', JSON.stringify({
+                        email: email,
+                        name: 'システム管理者',
+                        role: 'super_admin',
+                        loginTime: new Date().toISOString(),
+                        token: data.token
+                    }));
+                    
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Failed login
+                    showError('password', data.error || 'ログインに失敗しました');
+                    
+                    // Add shake animation to form
+                    const container = document.querySelector('.login-container');
+                    container.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        container.style.animation = '';
+                    }, 500);
+                }
+            })
+            .catch(error => {
+                console.error('Login error:', error);
+                setButtonLoading(submitButton, false);
+                showError('password', 'ログインエラーが発生しました。しばらくしてから再度お試しください。');
+            });
+        });
+
+        function showError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + '-error');
+            
+            field.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.classList.remove('error');
+            });
+            
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+                error.textContent = '';
+            });
+        }
+
+        function setButtonLoading(button, isLoading) {
+            if (isLoading) {
+                button.dataset.originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 認証中...';
+                button.disabled = true;
+            } else {
+                button.innerHTML = button.dataset.originalText;
+                button.disabled = false;
+            }
+        }
+
+        // Check if already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('admin_logged_in') === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        // Add shake animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Demo credentials info (remove in production)
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Demo Login Credentials:');
+            console.log('Email: admin@kids-platform.jp');
+            console.log('Password: demo123');
+        });
+    </script>
+</body>
+</html>

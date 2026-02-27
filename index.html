@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Professional Platform - 子ども向けプロフェッショナルマッチング</title>
+    <meta name="description" content="子ども向けサービスのプロフェッショナルと保護者・企業を繋ぐ安心・安全なマッチングプラットフォーム">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>Kids Professional Platform</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#features">サービス</a></li>
+                    <li><a href="#how-it-works">使い方</a></li>
+                    <li><a href="#about">プラットフォームについて</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                    <li><a href="#" class="btn-login">ログイン</a></li>
+                    <li><a href="#" class="btn-signup">新規登録</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    子どもの未来を育む<br>
+                    <span class="highlight">プロフェッショナル</span>との出会い
+                </h1>
+                <p class="hero-subtitle">
+                    安心・安全を最優先に、質の高い教育・保育・習い事のプロフェッショナルと<br>
+                    保護者・企業を繋ぐマッチングプラットフォーム
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">プロフェッショナルとして登録</a>
+                    <a href="#" class="btn btn-secondary">サービスを探す</a>
+                    <a href="#" class="btn btn-tertiary">企業向けサービス</a>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">1,200+</span>
+                        <span class="stat-label">認定プロフェッショナル</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5,000+</span>
+                        <span class="stat-label">満足した家族</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">満足度</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">3つの主要サービス</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>個人向けマッチング</h3>
+                    <p>教育・保育・習い事・エンターテイメント分野の厳選されたプロフェッショナルとの安全なマッチングサービス</p>
+                    <ul>
+                        <li>厳格な身元・資格確認</li>
+                        <li>詳細なレビュー・評価システム</li>
+                        <li>AIによる最適マッチング</li>
+                        <li>24時間安全サポート</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>企業支援サービス</h3>
+                    <p>子ども向けサービス企業に特化したクリエイティブ・マーケティング専門人材の紹介・支援</p>
+                    <ul>
+                        <li>Web制作・動画制作支援</li>
+                        <li>子育て世代向けマーケティング</li>
+                        <li>ブランディング戦略立案</li>
+                        <li>案件管理・品質保証</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>プロコミュニティ</h3>
+                    <p>プロフェッショナル同士の横のつながり形成と協業促進、スキルアップ支援</p>
+                    <ul>
+                        <li>分野横断ネットワーキング</li>
+                        <li>定期勉強会・研修</li>
+                        <li>協業案件マッチング</li>
+                        <li>メンタリング・相互支援</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">利用の流れ</h2>
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="parents">保護者の方</button>
+                    <button class="tab-btn" data-tab="professionals">プロフェッショナル</button>
+                    <button class="tab-btn" data-tab="companies">企業の方</button>
+                </div>
+                
+                <div class="tab-content active" id="parents">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>無料会員登録</h4>
+                            <p>簡単な情報入力でアカウント作成</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>プロフェッショナル検索</h4>
+                            <p>地域・分野・料金で最適なプロを検索</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>メッセージ・予約</h4>
+                            <p>安全なメッセージング機能で相談・予約</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>サービス利用</h4>
+                            <p>質の高いサービスを安心して利用</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h4>評価・フィードバック</h4>
+                            <p>サービス評価で品質向上に貢献</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="professionals">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>プロフィール登録</h4>
+                            <p>資格証明・実績を含む詳細プロフィール作成</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>審査・認証</h4>
+                            <p>厳格な身元確認と資格審査を通過</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>サービス出品</h4>
+                            <p>得意分野のサービスを魅力的に紹介</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>マッチング・受注</h4>
+                            <p>AIマッチングで最適な案件を受注</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h4>コミュニティ参加</h4>
+                            <p>同業者との交流とスキルアップ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="companies">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>企業アカウント登録</h4>
+                            <p>企業情報とニーズを登録</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>専門人材検索</h4>
+                            <p>Web制作・動画制作等の専門人材を検索</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>案件相談・提案</h4>
+                            <p>プロジェクトの詳細相談と提案受領</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>プロジェクト実行</h4>
+                            <p>専属管理による高品質な成果物納品</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h4>継続サポート</h4>
+                            <p>マーケティング・ブランディング継続支援</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">サービスカテゴリー</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <i class="fas fa-book"></i>
+                    <h4>学習・教育</h4>
+                    <p>個別指導、受験対策、特別支援教育</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-child"></i>
+                    <h4>保育・託児</h4>
+                    <p>ベビーシッター、病児保育、一時保育</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-music"></i>
+                    <h4>音楽・芸術</h4>
+                    <p>楽器指導、美術、工作、創作活動</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-running"></i>
+                    <h4>スポーツ</h4>
+                    <p>個人コーチング、専門技術指導</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-globe"></i>
+                    <h4>語学</h4>
+                    <p>英会話、多言語学習、国際理解</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>STEAM教育</h4>
+                    <p>プログラミング、科学実験、工学</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-theater-masks"></i>
+                    <h4>エンターテイメント</h4>
+                    <p>パフォーマー、マジック、イベント</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>企業支援</h4>
+                    <p>Web制作、動画制作、マーケティング</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="safety">
+        <div class="container">
+            <div class="safety-content">
+                <div class="safety-text">
+                    <h2>安心・安全への徹底的なこだわり</h2>
+                    <p>お子さまの安全を最優先に考えた、業界最高水準の安全管理システム</p>
+                    <ul class="safety-features">
+                        <li><i class="fas fa-shield-alt"></i> 厳格な身元確認と資格審査</li>
+                        <li><i class="fas fa-eye"></i> AIによる24時間監視システム</li>
+                        <li><i class="fas fa-phone"></i> 緊急時対応・通報機能</li>
+                        <li><i class="fas fa-certificate"></i> 継続的な品質管理と研修</li>
+                        <li><i class="fas fa-lock"></i> エンドツーエンド暗号化通信</li>
+                        <li><i class="fas fa-insurance"></i> 包括的な損害保険制度</li>
+                    </ul>
+                </div>
+                <div class="safety-image">
+                    <div class="safety-badge">
+                        <i class="fas fa-shield-check"></i>
+                        <span>安全認証済み</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community">
+        <div class="container">
+            <h2 class="section-title">プロフェッショナルコミュニティ</h2>
+            <div class="community-content">
+                <div class="community-image">
+                    <div class="community-visual">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="community-text">
+                    <h3>横のつながりで、みんなで成長</h3>
+                    <p>一人で活動するプロフェッショナルの孤立を解消し、同業者・異業種との協力により、より大きな価値創造を実現します。</p>
+                    <ul class="community-benefits">
+                        <li><i class="fas fa-handshake"></i> 同業者・異業種プロとのネットワーキング</li>
+                        <li><i class="fas fa-graduation-cap"></i> 定期勉強会・スキルアップ研修</li>
+                        <li><i class="fas fa-project-diagram"></i> 協業案件・大型プロジェクト参加</li>
+                        <li><i class="fas fa-heart"></i> ピアサポート・メンタリング</li>
+                        <li><i class="fas fa-share-alt"></i> リソース・ノウハウ共有</li>
+                        <li><i class="fas fa-trophy"></i> 成功事例・ベストプラクティス共有</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">利用者の声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"娘に合った英会話の先生を見つけることができ、楽しく学習しています。先生の身元確認もしっかりしているので安心です。"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>田中さん（6歳女児の母）</h5>
+                            <span>東京都・英会話レッスン利用</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"フリーランスとして活動していましたが、プラットフォームのおかげで安定した案件獲得ができるようになりました。"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>山田先生（音楽講師）</h5>
+                            <span>大阪府・ピアノ指導</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"企業サイトのリニューアルで、子ども向けUIに特化したデザイナーを紹介してもらい、素晴らしい成果を得られました。"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>佐藤様（教育系企業）</h5>
+                            <span>Web制作支援サービス利用</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>今すぐ始めてみませんか？</h2>
+                <p>お子さまの可能性を広げる素晴らしいプロフェッショナルとの出会いが待っています</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary large">無料で始める</a>
+                    <a href="#" class="btn btn-outline large">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Kids Professional Platform</h4>
+                    <p>子どもの未来を育む、安心・安全なプロフェッショナルマッチングプラットフォーム</p>
+                </div>
+                <div class="footer-section">
+                    <h5>サービス</h5>
+                    <ul>
+                        <li><a href="#">個人向けマッチング</a></li>
+                        <li><a href="#">企業支援サービス</a></li>
+                        <li><a href="#">プロコミュニティ</a></li>
+                        <li><a href="#">安全・セキュリティ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>サポート</h5>
+                    <ul>
+                        <li><a href="#">ヘルプセンター</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>お問い合わせ</h5>
+                    <p>Email: info@kids-platform.jp</p>
+                    <p>電話: 03-1234-5678</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kids Professional Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
